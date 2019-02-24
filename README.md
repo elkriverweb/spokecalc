@@ -9,7 +9,7 @@
 On Debian/Ubuntu
 
 ```bash
-sudo apt install build-essential cmake
+sudo apt install build-essential cmake devscripts
 
 ```
 
