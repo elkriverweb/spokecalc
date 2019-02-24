@@ -13,15 +13,21 @@ int main()
 	char redo;
 	double llength, rlength;
 
+	// Define some colors to make our output more interesting
+	string textInput = "\033[1;36m";
+	string textOutput = "\033[1;32m";
+	string textError = "\033[1;31m";
+	string textNormal = "\033[0m";
+
+	// Default strings
+	string inputTypeErrorMsg = textError + "Input must be a postive numerical value\n" + textNormal;
+	string leftInputText = textInput + "    Left: " + textNormal;
+	string rightInputText = textInput + "    Right: " + textNormal;
+
 	// Give variables some default values
 	lso = 0;
 	rso = 0;
 	shd = 2.5;
-
-	// Display bicycle asci art
-
-	cout << string(5, '\n');
-
 
 	// Start program
 	cout << string(5, '\n');
@@ -43,30 +49,29 @@ int main()
 
 		// Input effective rim diameter
 		erd = 0;
+		string erdInputText = textInput + "Effective Rim Diameter: " + textNormal;
 
-		cout << "Effective Rim Diameter: ";
+		cout << erdInputText;
 		cin >> erd;
-		cout << endl;
-
 
 		// Validate erd
 		while (erd == 0) {
 			if (cin.fail() || isnan(erd)) {
 				cin.clear();
 				cin.ignore(numeric_limits<streamsize>::max(), '\n');
-				cout << endl << "Input must be a postive numerical value\n";
-				cout << "Effective Rim Diameter: ";
+				cout << endl << inputTypeErrorMsg;
+				cout << erdInputText;
 				cin >> erd;
-				cout << endl;
 			}
 		}
+
+		cout << endl;
 
 		// Input left and right hub flange diameters
 		lfd = 0;
 		rfd = 0;
-
-		cout << "Hub Flange Diameter\n";
-		cout << "Left: ";
+		string hfdInputText = textInput + "Hub Flange Diameter\n" + textNormal;
+		cout << hfdInputText << leftInputText;
 		cin >> lfd;
 
 		// Validate lfd
@@ -74,14 +79,13 @@ int main()
 			if (cin.fail() || isnan(lfd)) {
 				cin.clear();
 				cin.ignore(numeric_limits<streamsize>::max(), '\n');
-				cout << endl << "Input must be a postive numerical value\n";
-				cout << "Left: ";
+				cout << endl << inputTypeErrorMsg;
+				cout << hfdInputText << leftInputText;
 				cin >> lfd;
-				cout << endl;
 			}
 		}
 
-		cout << "Right: ";
+		cout << rightInputText;
 		cin >> rfd;
 
 		// Validate rfd
@@ -89,10 +93,9 @@ int main()
 			if (cin.fail() || isnan(rfd)) {
 				cin.clear();
 				cin.ignore(numeric_limits<streamsize>::max(), '\n');
-				cout << endl << "Input must be a postive numerical value\n";
-				cout << "Right: ";
+				cout << endl << inputTypeErrorMsg;
+				cout << hfdInputText << rightInputText;
 				cin >> rfd;
-				cout << endl;
 			}
 		}
 
@@ -101,10 +104,9 @@ int main()
 		// Input left and right hub-center-to-flange measurements
 		clf = 0;
 		crf = 0;
+		string hcfInputText = textInput + "Hub Center to Flange Distance\n" + textNormal;
 
-		cout << "Hub Center to Flange Distance\n";
-
-		cout << "Left: ";
+		cout << hcfInputText << leftInputText;
 		cin >> clf;
 
 		// Validate clf
@@ -112,14 +114,13 @@ int main()
 			if (cin.fail() || isnan(clf)) {
 				cin.clear();
 				cin.ignore(numeric_limits<streamsize>::max(), '\n');
-				cout << endl << "Input must be a postive numerical value\n";
-				cout << "Left: ";
+				cout << endl << inputTypeErrorMsg;
+				cout << hcfInputText << leftInputText;
 				cin >> clf;
-				cout << endl;
 			}
 		}
 
-		cout << "Right: ";
+		cout << rightInputText;
 		cin >> crf;
 
 		// Validate crf
@@ -127,33 +128,66 @@ int main()
 			if (cin.fail() || isnan(crf)) {
 				cin.clear();
 				cin.ignore(numeric_limits<streamsize>::max(), '\n');
-				cout << endl << "Input must be a postive numerical value\n";
-				cout << "Right: ";
+				cout << endl << inputTypeErrorMsg;
+				cout << hcfInputText << rightInputText;
 				cin >> crf;
-				cout << endl;
 			}
 		}
 
 		cout << endl;
 
 		// Input number of spokes
-		cout << "Number of Spokes: ";
+		nos = 0;
+		string nosInputText = textInput + "Number of Spokes: " + textNormal;
+		cout << nosInputText;
 		cin >> nos;
 		cout << endl;
 
+		// Validate nos
+		while (nos == 0) {
+			if (cin.fail() || isnan(nos)) {
+				cin.clear();
+				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				cout << endl << inputTypeErrorMsg;
+				cout << nosInputText;
+				cin >> nos;
+			}
+		}
+
 		// Input number of spoke crosses
-		cout << "Number of Spoke Crosses\n";
-		cout << "Left: ";
+		lnoc = 0;
+		rnoc = 0;
+		string nocInputText = textInput + "Number of Spoke Crosses\n" + textNormal;
+		cout << nocInputText;
+		cout << leftInputText;
 		cin >> lnoc;
 
-		cout << "Right: ";
+		// Validate lnoc
+		while (lnoc == 0) {
+			if (cin.fail() || isnan(lnoc)) {
+				cin.clear();
+				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				cout << endl << inputTypeErrorMsg;
+				cout << nocInputText << leftInputText;
+				cin >> lnoc;
+			}
+		}
+
+		cout << rightInputText;
 		cin >> rnoc;
+
+		// Validate rnoc
+		while (rnoc == 0) {
+			if (cin.fail() || isnan(rnoc)) {
+				cin.clear();
+				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				cout << endl << inputTypeErrorMsg;
+				cout << nocInputText << rightInputText;
+				cin >> rnoc;
+			}
+		}
 		cout << endl;
 
-		// Input Hub Spoke Hole Diameter
-		cout << "Hub Spoke Hole Diameter (default = 2.5mm): ";
-		cin >> shd;
-		cout << endl;
 
 		// Caclulate left side spoke length
 		llength = -(shd / 2) + 0.998 * sqrt((pow(erd, 2) / 4) + (pow(lfd, 2) / 4) - (erd * lfd / 2 * cos(4 * M_PI * lnoc / nos )) + pow((clf + lso), 2)) + 0.5;
@@ -163,12 +197,12 @@ int main()
 
 
 		// Print out results
-		cout << "-------------------------------------------------------------\n";
-		cout << "--- Results -------------------------------------------------\n";
-		cout << "-------------------------------------------------------------\n";
+		cout << "-----------------------------------------------------------------\n";
+		cout << "-------------------------- Results ------------------------------\n";
+		cout << "-----------------------------------------------------------------\n";
 		cout << endl;
-		cout << "Left Spoke Length:  " << llength << endl;
-		cout << "Right Spoke Length: " << rlength << endl;
+		cout << textOutput << "Left Spoke Length:  "  << textNormal << llength << endl;
+		cout << textOutput << "Right Spoke Length: "  << textNormal << rlength << endl;
 		cout << endl;
 
 		// Ask to run caclulator again before exiting
