@@ -4,6 +4,15 @@
 
 ## Installation
 
+#### Requirements
+
+On Debian/Ubuntu
+
+```bash
+sudo apt install build-essential cmake
+
+```
+
 Clone the project's repository
 
 ``` bash
@@ -18,7 +27,7 @@ cd spokecalc/build/
 ```
 
 ```bash
-cmake
+cmake ..
 ```
 
 ```bash
