@@ -103,6 +103,14 @@ int main()
 			}
 		}
 
+		while (lfd < 0 || lfd > 400) {
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << endl << textError << "Hub flange diameter must be a value between 0 and 400\n" << textNormal;
+			cout << hfdInputText << leftInputText;
+			cin >> lfd;
+		}
+
 		cout << rightInputText;
 		cin >> rfd;
 
@@ -115,6 +123,14 @@ int main()
 				cout << hfdInputText << rightInputText;
 				cin >> rfd;
 			}
+		}
+
+		while (rfd < 0 || rfd > 400) {
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << endl << textError << "Hub flange diameter must be a value between 0 and 400\n" << textNormal;
+			cout << hfdInputText << rightInputText;
+			cin >> rfd;
 		}
 
 		cout << endl;
