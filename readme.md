@@ -63,14 +63,3 @@ make
 
 ```
 
-## Usage
-
-Run the executable from the project's source repository
-
-```bash
-./bin/spokecalc
-
-```
-
-
-
