@@ -58,7 +58,7 @@ int main()
 
 		// Input effective rim diameter
 		erd = 0;
-		string erdInputText = textInput + "Effective Rim Diameter: " + textNormal;
+		string erdInputText = textInput + "Effective Rim Diameter (ERD): " + textNormal;
 
 		cout << erdInputText;
 		cin >> erd;
@@ -72,6 +72,14 @@ int main()
 				cout << erdInputText;
 				cin >> erd;
 			}
+		}
+
+		if (erd <= 100.00 || erd >= 699.99) {
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << endl << textError << "ERD must be a value between 100 and 700\n" << textNormal;
+			cout << erdInputText;
+			cin >> erd;
 		}
 
 		cout << endl;
