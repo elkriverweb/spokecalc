@@ -1,0 +1,13 @@
+Source: spokecalc
+Section: misc
+Priority: optional
+Maintainer: Matt Barron <mattbarron@elkriverweb.com>
+Build-Depends: cmake, build-essential
+Homepage: https://bitbucket.org/elkriverweb/spokecalc/
+
+Package: spokecalc
+Architecture: any
+Depends:
+Description: Command Line Spoke Calculator
+ A simple command line bicycle spoke length calculator to quickly
+ and accurately determine spoke length when building a wheel.

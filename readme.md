@@ -19,10 +19,10 @@ Clone the project's repository
 git clone https://elkriverweb@bitbucket.org/elkriverweb/spokecalc.git
 ```
 
-Build from source
+Compile source from project root directory
 
 ```bash
-cd spokecalc/build/
+mkdir build && cd build
 
 ```
 
