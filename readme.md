@@ -4,12 +4,40 @@
 
 ## Installation
 
-#### Requirements
+#### Install from PPA (Ubuntu/Debian)
+
+Install key
+
+```bash
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv-keys E0C69416
+
+```
+Add repository
+
+```bash
+sudo add-apt-repository ppa:elkriverweb/spokecalc
+
+```
+
+Update and install
+
+```bash
+sudo apt-get update && sudo apt-get install spokecalc
+
+```
+Run
+
+```bash
+spokecalc
+
+```
+
+#### Build Requirements
 
 On Debian/Ubuntu
 
 ```bash
-sudo apt install build-essential cmake devscripts
+sudo apt install build-essential cmake devscripts debhelper
 
 ```
 
