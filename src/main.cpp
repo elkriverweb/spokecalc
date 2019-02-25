@@ -41,7 +41,16 @@ int main()
 	cout << "---------------- Written by: Matt Barron ------------------------\n";
 	cout << "-----------------------------------------------------------------\n";
 	cout << endl;
+
+	// Print disclaimer
+	cout << textError;
+	cout << "          Use at own risk! Please take the time to ensure\n";
+	cout << "        that all your hub and rim measurements are acurrate.\n";
+	cout << "          All measurements must be in millimeters (mm).\n";
+	cout << textNormal;
+
 	cout << string(5, '\n');
+
 
 	// Loop so program can be re run without exiting
 	do
