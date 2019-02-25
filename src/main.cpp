@@ -9,7 +9,8 @@ int main()
 {
 
 	// Define variables
-	double erd, lso, rso, lfd, rfd, clf, crf, shd, nos, lnoc, rnoc;
+	double erd, lso, rso, lfd, rfd, clf, crf, shd;
+	int nos, lnoc, rnoc;
 	char redo;
 	double llength, rlength;
 
@@ -74,7 +75,7 @@ int main()
 			}
 		}
 
-		if (erd <= 100.00 || erd >= 699.99) {
+		while (erd <= 100.00 || erd >= 699.99) {
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 			cout << endl << textError << "ERD must be a value between 100 and 700\n" << textNormal;
@@ -170,6 +171,15 @@ int main()
 				cin >> nos;
 			}
 		}
+		while ((0 + nos) % 4 != 0) {
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << endl << textError << "Number of spokes must be a multipe of 4 (eg. 28, 32, 36)\n" << textNormal;
+			cout << nosInputText;
+			cin >> nos;
+		}
+
+		cout << endl;
 
 		// Input number of spoke crosses
 		lnoc = 0;
