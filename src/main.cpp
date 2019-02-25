@@ -159,7 +159,6 @@ int main()
 		string nosInputText = textInput + "Number of Spokes: " + textNormal;
 		cout << nosInputText;
 		cin >> nos;
-		cout << endl;
 
 		// Validate nos
 		while (nos == 0) {
@@ -200,6 +199,22 @@ int main()
 			}
 		}
 
+		while (lnoc < 0 || lnoc > 4) {
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << endl << textError << "Number of crosses must be a value between 0 and 4\n" << textNormal;
+			cout << nocInputText << leftInputText;
+			cin >> lnoc;
+		}
+
+		while (lnoc * 9 > nos) {
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << endl << textError << "Number of crosses can not be more than the number of spokes divided by nine\n" << textNormal;
+			cout << nocInputText << leftInputText;
+			cin >> lnoc;
+		}
+
 		cout << rightInputText;
 		cin >> rnoc;
 
@@ -213,6 +228,23 @@ int main()
 				cin >> rnoc;
 			}
 		}
+
+		while (rnoc < 0 || rnoc > 4) {
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << endl << textError << "Number of crosses must be a value between 0 and 4\n" << textNormal;
+			cout << nocInputText << rightInputText;
+			cin >> rnoc;
+		}
+
+		while (rnoc * 9 > nos) {
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << endl << textError << "Number of crosses can not be more than the number of spokes divided by nine\n" << textNormal;
+			cout << nocInputText << rightInputText;
+			cin >> rnoc;
+		}
+
 		cout << endl;
 
 
