@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.7.2)
 project(spokecalc)
+cmake_minimum_required(VERSION 3.7.2)
 
 set(EXECUTABLE_OUTPUT_PATH  ${spokecalc_SOURCE_DIR}/bin/)
 
@@ -10,3 +10,10 @@ include_directories(include)
 file(GLOB SOURCES "src/*.cpp")
 
 add_executable(spokecalc ${SOURCES})
+
+install(
+    TARGETS
+        spokecalc
+    RUNTIME DESTINATION
+        ${CMAKE_INSTALL_PREFIX}/bin
+    )
