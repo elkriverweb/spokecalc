@@ -154,6 +154,14 @@ int main()
 			}
 		}
 
+		while (clf < 0 || clf > 200) {
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << endl << textError << "Hub center to flange value must be between 0 and 200\n" << textNormal;
+			cout << hcfInputText << leftInputText;
+			cin >> clf;
+		}
+
 		cout << rightInputText;
 		cin >> crf;
 
@@ -166,6 +174,14 @@ int main()
 				cout << hcfInputText << rightInputText;
 				cin >> crf;
 			}
+		}
+
+		while (crf < 0 || crf > 200) {
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << endl << textError << "Hub center to flange value must be between 0 and 200\n" << textNormal;
+			cout << hcfInputText << rightInputText;
+			cin >> crf;
 		}
 
 		cout << endl;
