@@ -8,11 +8,11 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +181 src/main.cpp
+badd +41 src/main.cpp
 badd +1 debian/changelog
 argglobal
 silent! argdel *
-edit src/main.cpp
+edit debian/changelog
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -33,7 +33,7 @@ if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 1
-normal! 0
+normal! 018|
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

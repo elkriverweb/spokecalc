@@ -9,4 +9,4 @@ bin/*
 .DS_Store
 
 # Ignore vim session files
-*.vim
+/*.vim

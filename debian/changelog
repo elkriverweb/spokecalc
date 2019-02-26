@@ -1,4 +1,4 @@
-spokecalc (0.1.1-0ubuntu1) bionic; urgency=medium
+spokecalc (0.1.1-0) bionic; urgency=medium
 
   * Added further validation checks for input data.
 
