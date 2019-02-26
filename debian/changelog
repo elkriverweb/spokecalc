@@ -1,3 +1,10 @@
+spokecalc (0.1.2-0) bionic; urgency=medium
+
+  * Added ability to calculate with asymetrical rims that have offset spoke
+    beds.
+
+ -- Matt Barron <mattbarron@elkriverweb.com>  Mon, 25 Feb 2019 23:26:24 -0700
+
 spokecalc (0.1.1-0) bionic; urgency=medium
 
   * Added further validation checks for input data.

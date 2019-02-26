@@ -63,3 +63,15 @@ make
 
 ```
 
+#### Debian Packaging
+
+```bash
+tar -acf spokecalc_x.x.x-x.orig.tg.gz
+
+cd spokecalc
+
+debuild -S -sa
+
+dput ppa:elkriverweb/spokecalc spokecalc_x.x.x-x_source.changes
+
+```
