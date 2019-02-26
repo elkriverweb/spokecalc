@@ -110,19 +110,19 @@ int main()
 
 		// Define repeatedly used input message variables
 		string sboInputText = textInput + "Spoke Bed Offset\n" + textNormal;
-		string sboErrorText = textError + "Spoke bed offset must be a positive value between 0 and 100\n" + textNormal;
+		string sboErrorText = textError + "Spoke bed offset must be a value between -100 and 100\n" + textNormal;
 
 		switch(osb[0]) {
 			case 'Y' :
 			case 'y' :
-				lso = -1;
-				rso = -1;
+				lso = -101;
+				rso = -101;
 				cout << endl << sboInputText;
 				cout << leftInputText;
 				cin >> lso;
 
 				// validate lso
-				while (lso < 0 || lso > 100) {
+				while (lso < -100 || lso > 100) {
 					cin.clear();
 					cin.ignore(numeric_limits<streamsize>::max(), '\n');
 					cout << endl << sboErrorText;
@@ -134,7 +134,7 @@ int main()
 				cin >> rso;
 
 				// validate rso
-				while (rso < 0 || rso > 100) {
+				while (rso < -100 || rso > 100) {
 					cin.clear();
 					cin.ignore(numeric_limits<streamsize>::max(), '\n');
 					cout << endl << sboErrorText;

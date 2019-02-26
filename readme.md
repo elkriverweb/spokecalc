@@ -66,7 +66,7 @@ make
 #### Debian Packaging
 
 ```bash
-tar -acf spokecalc_x.x.x-x.orig.tg.gz spokecalc
+tar -acf spokecalc_x.x.x.orig.tg.gz spokecalc
 
 cd spokecalc
 
