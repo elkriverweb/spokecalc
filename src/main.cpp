@@ -19,6 +19,7 @@ int main()
 	string textOutput = "\033[1;32m";
 	string textError = "\033[1;31m";
 	string textNormal = "\033[0m";
+	string textNews = "\033[0;33m";
 
 	// Default strings
 	string inputTypeErrorMsg = textError + "Input must be a postive numerical value\n" + textNormal;
@@ -26,37 +27,45 @@ int main()
 	string rightInputText = textInput + "    Right: " + textNormal;
 
 	// Give variables some default values
-	lso = 0;
-	rso = 0;
 	shd = 2.5;
 
 	// Start program
 	cout << string(5, '\n');
 	cout << "-----------------------------------------------------------------\n";
-	cout << R"(-------------------------       __o     -------------------------)" << "\n";
-	cout << R"(-------------------------     _ \<_     -------------------------)" << "\n";
-	cout << R"(-------------------------    (_)/(_)    -------------------------)" << "\n";
+	cout << "-------------------------" << textOutput << "       __o     " << textNormal << "-------------------------\n";
+	cout << "-------------------------" << textOutput << "     _ \\<_     " << textNormal << "-------------------------\n";
+	cout << "-------------------------" << textOutput << "    (_)/(_)    " << textNormal << "-------------------------\n";
 	cout << "-----------------------------------------------------------------\n";
-	cout << "---------------- Bicycle Spoke Length Calculator ----------------\n";
-	cout << "---------------- version 0.1.1 ----------------------------------\n";
-	cout << "---------------- Written by: Matt Barron ------------------------\n";
+	cout << "---------------- " << textOutput << "Bicycle Spoke Length Calculator" << textNormal << " ----------------\n";
+	cout << "---------------- " << textOutput << "Version 0.1.1" << textNormal << " ----------------------------------\n";
+	cout << "---------------- " << textOutput << "Written by: Matt Barron" << textNormal << " ------------------------\n";
 	cout << "-----------------------------------------------------------------\n";
 	cout << endl;
 
 	// Print disclaimer
 	cout << textError;
-	cout << "          Use at own risk! Please take the time to ensure\n";
-	cout << "        that all your hub and rim measurements are acurrate.\n";
+	cout << "                      Disclaimer and warning!\n";
+	cout << textNormal << endl;
+	// cout << textNews;
+	cout << "           Accurate results require accurate measurments.\n";
+	cout << "   Take the time to ensure your rim and hub are measured correctly.\n";
 	cout << "          All measurements must be in millimeters (mm).\n";
+	cout << endl;
+	cout << "          This calculator can not currently be used to\n";
+	cout << "            calculate spokes for straight pull hubs.\n";
+	// cout << textNormal;
+
+	cout << endl << textNews;
+	cout << "                     Also available online!\n";
+	cout << "         https://biketechtools.com/spoke-length-calculator\n";
 	cout << textNormal;
-
-	cout << string(5, '\n');
-
 
 	// Loop so program can be re run without exiting
 	do
 	{
 
+		cout << string(5, '\n');
+		cout << textOutput << "Input rim and hub measurements for wheel build\n" << textNormal << endl;
 		// Input effective rim diameter
 		erd = 0;
 		string erdInputText = textInput + "Effective Rim Diameter (ERD): " + textNormal;
@@ -81,6 +90,68 @@ int main()
 			cout << endl << textError << "ERD must be a value between 100 and 700\n" << textNormal;
 			cout << erdInputText;
 			cin >> erd;
+		}
+
+		cout << endl;
+
+		// Input spoke bed offset in rim. Default is zero
+		string osb = "x";
+		string osbInputText = textInput + "Is this rim asymetric (Offset spoke bed)? [y/N]: " + textNormal;
+		cout << osbInputText;
+		cin >> osb;
+
+		while (osb[0] != 'Y' && osb[0] != 'y' && osb[0] != 'n' && osb[0] != 'N') {
+			cin.clear();
+			cin.ignore();
+			cout << endl << textError << "Please answer either 'Y' for yes or 'N' for no\n" << textNormal;
+			cout << osbInputText;
+			cin >> osb;
+		}
+
+		// Define repeatedly used input message variables
+		string sboInputText = textInput + "Spoke Bed Offset\n" + textNormal;
+		string sboErrorText = textError + "Spoke bed offset must be a positive value between 0 and 100\n" + textNormal;
+
+		switch(osb[0]) {
+			case 'Y' :
+			case 'y' :
+				lso = -1;
+				rso = -1;
+				cout << endl << sboInputText;
+				cout << leftInputText;
+				cin >> lso;
+
+				// validate lso
+				while (lso < 0 || lso > 100) {
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
+					cout << endl << sboErrorText;
+					cout << sboInputText << leftInputText;
+					cin >> lso;
+				}
+
+				cout << rightInputText;
+				cin >> rso;
+
+				// validate rso
+				while (rso < 0 || rso > 100) {
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
+					cout << endl << sboErrorText;
+					cout << sboInputText << rightInputText;
+					cin >> rso;
+				}
+
+				cout << endl;
+				break;
+
+			case 'N' :
+			case 'n' :
+				lso = 0;
+				rso = 0;
+				cout << textInput << "Spoke Bed Offset: " << textNormal << "None";
+				cout << endl;
+				break;
 		}
 
 		cout << endl;
@@ -213,15 +284,15 @@ int main()
 		cout << endl;
 
 		// Input number of spoke crosses
-		lnoc = 0;
-		rnoc = 0;
+		lnoc = -1;
+		rnoc = -1;
 		string nocInputText = textInput + "Number of Spoke Crosses\n" + textNormal;
 		cout << nocInputText;
 		cout << leftInputText;
 		cin >> lnoc;
 
 		// Validate lnoc
-		while (lnoc == 0) {
+		while (lnoc < 0) {
 			if (cin.fail() || isnan(lnoc)) {
 				cin.clear();
 				cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -251,7 +322,7 @@ int main()
 		cin >> rnoc;
 
 		// Validate rnoc
-		while (rnoc == 0) {
+		while (rnoc < 0) {
 			if (cin.fail() || isnan(rnoc)) {
 				cin.clear();
 				cin.ignore(numeric_limits<streamsize>::max(), '\n');
